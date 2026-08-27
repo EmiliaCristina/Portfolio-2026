@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import { useDialogueStore } from '../DialogueEngine';
 import { useModalStore, HASH_TO_MODAL_PAGE } from '../ModalStore';
+import { publicUrl } from '../utils/publicUrl';
 
 // Import delle icone social
 import { FaLinkedinIn, FaArtstation, FaWhatsapp } from 'react-icons/fa';
@@ -207,8 +208,11 @@ export default function Overlay() {
                     }
 
                     // Altri URL (mail, CV) restano un link vero e proprio.
+                    // Solo i path relativi al sito ("/cv-emilia.pdf") vanno
+                    // fatti passare da publicUrl: mailto:/http(s) restano intatti.
                     if (choice.url) {
-                      window.location.href = choice.url;
+                      const isExternal = /^(mailto:|https?:)/.test(choice.url);
+                      window.location.href = isExternal ? choice.url : publicUrl(choice.url);
                       return;
                     }
 
