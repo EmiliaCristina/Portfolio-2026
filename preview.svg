@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">DEC Interactive Portfolio — placeholder preview</title>
+  <desc id="desc">Stylized mockup of the landing screen: a dialogue panel on the left and a character with a CRT-style screen head on the right, on a soft grey studio background.</desc>
+
+  <defs>
+    <radialGradient id="bg" cx="55%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#f4f4f5"/>
+      <stop offset="100%" stop-color="#d8d8db"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- dialogue panel, left -->
+  <g font-family="Helvetica, Arial, sans-serif">
+    <text x="80" y="270" font-size="13" letter-spacing="2" fill="#8a8a92">HI, I'M DUCULET EMILIA CRISTINA.</text>
+    <text x="80" y="320" font-size="30" font-weight="500" fill="#111114">I'm Emi — your 3D Artist</text>
+    <text x="80" y="358" font-size="30" font-weight="500" fill="#111114">&amp; Multidisciplinary Designer.</text>
+
+    <rect x="80" y="400" width="160" height="38" rx="19" fill="#111114"/>
+    <text x="160" y="424" font-size="13" fill="#ffffff" text-anchor="middle">Nice to meet you</text>
+
+    <rect x="256" y="400" width="200" height="38" rx="19" fill="#ffffff" stroke="#111114" stroke-opacity="0.15"/>
+    <text x="356" y="424" font-size="13" fill="#111114" text-anchor="middle">What can I do for you?</text>
+  </g>
+
+  <!-- character silhouette -->
+  <g transform="translate(800,90)">
+    <!-- shoulders -->
+    <path d="M -140 460 C -140 320 -60 300 0 300 C 60 300 140 320 140 460 L 140 500 L -140 500 Z" fill="#c9c9cf"/>
+
+    <!-- neck cables -->
+    <path d="M -70 300 C -95 320 -100 350 -85 380" stroke="#3a3a3d" stroke-width="4" fill="none" opacity="0.5"/>
+    <path d="M 70 300 C 95 320 100 350 85 380" stroke="#3a3a3d" stroke-width="4" fill="none" opacity="0.5"/>
+
+    <!-- CRT bezel -->
+    <rect x="-130" y="-40" width="260" height="240" rx="18" fill="#dcdcdf" stroke="#b9b9bf" stroke-width="3"/>
+    <!-- screen -->
+    <rect x="-100" y="-8" width="200" height="176" rx="6" fill="#0a0b10"/>
+
+    <!-- scanline texture -->
+    <g opacity="0.25" stroke="#7f95ff" stroke-width="1">
+      <line x1="-95" y1="10" x2="95" y2="10"/>
+      <line x1="-95" y1="26" x2="95" y2="26"/>
+      <line x1="-95" y1="42" x2="95" y2="42"/>
+      <line x1="-95" y1="58" x2="95" y2="58"/>
+      <line x1="-95" y1="74" x2="95" y2="74"/>
+      <line x1="-95" y1="90" x2="95" y2="90"/>
+      <line x1="-95" y1="106" x2="95" y2="106"/>
+      <line x1="-95" y1="122" x2="95" y2="122"/>
+      <line x1="-95" y1="138" x2="95" y2="138"/>
+      <line x1="-95" y1="154" x2="95" y2="154"/>
+    </g>
+
+    <!-- starfield dots -->
+    <g fill="#8fa8ff">
+      <circle cx="-70" cy="30" r="1.6"/>
+      <circle cx="-40" cy="60" r="1.2"/>
+      <circle cx="20" cy="20" r="1.4"/>
+      <circle cx="60" cy="50" r="1.6"/>
+      <circle cx="0" cy="100" r="1.2"/>
+      <circle cx="-60" cy="120" r="1.4"/>
+      <circle cx="70" cy="130" r="1.2"/>
+    </g>
+
+    <text x="60" y="150" font-size="11" letter-spacing="1.5" fill="#8fa8ff" text-anchor="end" font-family="Helvetica, Arial, sans-serif">[CLICK] TO START</text>
+
+    <!-- side dial -->
+    <circle cx="146" cy="70" r="12" fill="#2b2b2e"/>
+  </g>
+
+  <text x="80" y="620" font-size="12" fill="#9a9aa0" font-family="Helvetica, Arial, sans-serif">Placeholder preview — replace docs/preview.png with a real screenshot</text>
+</svg>
