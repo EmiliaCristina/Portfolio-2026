@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import glitch1 from '../assets/glitch1.jpg';
+import glitch2 from '../assets/glitch2.png';
+import artSketch from '../assets/art_sketch.jpg';
 
-// Mantieni i percorsi come stringhe (presuppone che siano in public/assets/)
-const IMAGE_URLS = [
-  '/assets/glitch1.jpg',
-  '/assets/glitch2.png',
-  '/assets/art_sketch.jpg',
-];
+// Import ES veri (non stringhe): questi file vivono in src/assets/, non in
+// public/assets/, quindi devono passare dal bundler per avere l'URL corretto
+// sia in locale sia sotto il "base" path di GitHub Pages.
+const IMAGE_URLS = [glitch1, glitch2, artSketch];
 
 export function ScreenTexture({ expression = 'off', screenMaterial }) {
   const canvasRef = useRef(document.createElement('canvas'));
