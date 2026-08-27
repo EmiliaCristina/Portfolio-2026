@@ -9,6 +9,7 @@ import {
   RigidBody,
   CylinderCollider,
 } from '@react-three/rapier';
+import { publicUrl } from '../utils/publicUrl';
 
 // 1. Categorie e abbinamento esatto con le righe della nuova texture (MyStacks_2.jpg)
 const categories = [
@@ -135,7 +136,7 @@ const BallsScene = ({ isActive }) => {
   // scritto solo quando ci si riferisce alla cartella su disco, non
   // nell'URL con cui il browser la richiede). Era proprio questo il bug
   // per cui lo Stack non compariva.
-  const atlasTexture = useTexture('/images/MyStacks.png');
+  const atlasTexture = useTexture(publicUrl('/images/MyStacks.png'));
 
   const sphereItems = useMemo(() => {
     if (!atlasTexture || !atlasTexture.image) return [];
@@ -272,7 +273,7 @@ const TechStackBalls = () => {
         </Suspense>
 
         <Environment
-          files="/models/char_enviorment.hdr"
+          files={publicUrl('/models/char_enviorment.hdr')}
           environmentIntensity={0.5}
           environmentRotation={[0, 4, 2]}
         />
