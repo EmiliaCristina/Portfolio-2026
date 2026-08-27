@@ -1,10 +1,11 @@
 import React from 'react';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
+import { publicUrl } from '../utils/publicUrl';
 
 export function BackgroundLogo(props) {
   // Carica l'immagine dalla cartella public/
-  const texture = useTexture('/Asset 4.png');
+  const texture = useTexture(publicUrl('/Asset 4.png'));
 
   return (
     <mesh
