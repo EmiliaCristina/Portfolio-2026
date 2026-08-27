@@ -1,4 +1,5 @@
 import '../WorkDetailPage.css';
+import { publicUrl } from '../../utils/publicUrl';
 
 /**
  * `onBack` è la callback per tornare alla lista: nella pagina/route è
@@ -33,7 +34,7 @@ const WorkDetailContent = ({ project, onBack, backLabel = 'Torna a My Work' }) =
 
       <div className="project-hero-image">
         <img
-          src={project.detailImage ? project.detailImage : project.image}
+          src={publicUrl(project.detailImage ? project.detailImage : project.image)}
           alt={project.alt}
         />
       </div>
