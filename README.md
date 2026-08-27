@@ -1,4 +1,8 @@
-> Placeholder mockup above — swap `docs/preview.png` for a real screenshot (see [Adding a real screenshot](#adding-a-real-screenshot) below).
+# DEC — Emi Interactive Portfolio
+
+![Preview](docs/preview.png)
+> Placeholder mockup above — swap `docs/preview.png` 
+
 
 # DEC — Emi Interactive Portfolio
 
