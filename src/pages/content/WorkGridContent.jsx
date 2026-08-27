@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { workProjects } from '../workData';
+import { publicUrl } from '../../utils/publicUrl';
 import '../WorkPage.css';
 
 // Piccolo tilt 3D che segue il mouse sulla card, spento su schermi
@@ -21,7 +22,7 @@ const resetTilt = (e) => {
 const CardInner = ({ project, index }) => (
   <>
     <div className="work-card-image">
-      <img src={project.image} alt={project.alt} />
+      <img src={publicUrl(project.image)} alt={project.alt} />
     </div>
     <div className="work-card-info">
       <span className="work-card-number">
