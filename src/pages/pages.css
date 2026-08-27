@@ -1,0 +1,103 @@
+/* ==========================================================
+   TEMA CONDIVISO PER LE PAGINE STANDALONE
+   ==========================================================
+   Solo contenuto/layout, senza il personaggio 3D: pensate per essere
+   aperte da un click nella dialogue di Emi (vedi DialogueEngine.js
+   -> scelte con "url": "#/work" ecc.) e per essere riusate anche fuori
+   da questo progetto, in modo autonomo.
+   Stessa palette chiara e stessa tipografia dei titoli di sezione già
+   usate nel sito portfolio principale, riportate qui in versione
+   self-contained (nessuna dipendenza da altre parti del progetto). */
+
+.page-shell {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #c7c7c7;
+  background-image: radial-gradient(
+    circle at 50% 30%,
+    #d9d9d9 0%,
+    #c7c7c7 55%,
+    #a9a9a9 100%
+  );
+  color: #141414;
+  font-family: inherit;
+  padding: 0 6vw 100px 6vw;
+}
+
+.page-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+}
+.page-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #141414;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  border: 1px solid rgba(20, 20, 20, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.page-back-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+.page-brand {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #3a3a3a;
+}
+
+.page-title {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 40px 0 50px 0;
+}
+.page-title > span {
+  color: #0f7e6f;
+}
+
+@media only screen and (max-width: 900px) {
+  .page-shell {
+    padding: 0 6vw 70px 6vw;
+  }
+  .page-title {
+    font-size: 40px;
+    margin: 24px 0 34px 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .page-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .page-brand {
+    display: none; /* su schermi molto piccoli lascia spazio solo al back-link */
+  }
+  .page-title {
+    font-size: 30px;
+    margin: 16px 0 26px 0;
+  }
+  .page-back-link {
+    font-size: 13px;
+    padding: 9px 14px;
+  }
+}
+
+

@@ -1,0 +1,233 @@
+.what-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch; /* Allinea l'altezza delle card nella griglia */
+}
+
+/* Contenitore con prospettiva 3D */
+.card-container {
+  perspective: 1000px;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* La card usa min-height per adattarsi ai contenuti più lunghi (come WEB) */
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 480px; /* Altezza minima aumentata per contenere tutti i tag senza sbavature */
+  background: #fffffd;
+  border-radius: 28px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.75s ease;
+  transform-style: preserve-3d;
+}
+
+/* Ombra inferiore fluttuante stile 3D */
+.card::before {
+  content: "";
+  position: absolute;
+  bottom: -24px;
+  left: 5%;
+  width: 90%;
+  height: 110px;
+  transform: translate(0em, 60%) rotateX(90deg) scale(0.8);
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: -10;
+  filter: blur(24px);
+}
+
+/* Attivazione del Flip (Hover del mouse o Click su touch device) */
+.card-container:hover .card,
+.card-container--active .card {
+  transform: rotateY(180deg);
+}
+
+/* --- RETRO (BACK) --- */
+.back {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inset: 0.7em;
+  border-radius: 22px;
+  background: #45A29E;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.blue {
+  position: absolute;
+  background: linear-gradient(135deg, #3AAFA9, #C0FDFB);
+  inset: 0;
+  border-radius: 100%;
+  transform-origin: center;
+  transform: scale(0.875) skewX(-22.5deg);
+  filter: blur(12px); /* Regola i px per aumentare o diminuire la sfocatura */
+  opacity: 0.85;     /* Opzionale: rende l'effetto sfumato più delicato */
+}
+
+.back .text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+}
+
+.card-badge {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #DEF2F1;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+
+.back h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fffffd;
+  margin: 0;
+}
+
+.what-card-hint {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #17252A;
+}
+
+/* --- FRONTE (FRONT) --- */
+.front {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 24px;
+  inset: 0.7em;
+  border-radius: 22px;
+  background: #ffffff;
+  overflow: hidden;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.front .blue {
+  border: 13em solid #95f0e4;
+  background: transparent;
+  transform: scale(0.92, 0.875) skewX(-22.5deg);
+  pointer-events: none;
+}
+
+.front-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.front h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #191f1f;
+}
+
+.front h4 {
+  font-size: 15px;
+  font-weight: 500;
+  color: #0f7e6f;
+  margin: 0 0 12px 0;
+}
+
+.front p {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #3a3a3a;
+  margin: 0 0 16px 0;
+}
+
+.front h5 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #767676;
+  margin: 0 0 8px 0;
+}
+
+.what-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.what-tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* --- SEZIONI GENERALI --- */
+.page-subtitle {
+  font-size: 40px;
+  font-weight: 500;
+  margin: 70px 0 10px 0;
+}
+.page-subtitle > span {
+  color: #0b9482;
+}
+
+
+
+.stack-hint {
+  font-size: 14px;
+  color: #4a4a4a;
+  margin: 0 0 24px 0;
+}
+.tech-balls-fallback {
+  height: 62vh;
+  min-height: 380px;
+  max-height: 620px;
+  border-radius: 20px;
+  background-color: #bdbdbd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+/* --- MEDIA QUERIES --- */
+@media only screen and (max-width: 1200px) {
+  .what-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 640px) {
+  .what-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-subtitle {
+    font-size: 30px;
+    margin-top: 50px;
+  }
+}

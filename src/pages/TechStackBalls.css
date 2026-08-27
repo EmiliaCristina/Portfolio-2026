@@ -1,0 +1,30 @@
+.tech-balls-container {
+  position: relative;
+  width: 100%;
+  height: 62vh;
+  min-height: 380px;
+  max-height: 620px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #bdbdbd;
+  background-image: radial-gradient(
+    circle at 50% 40%,
+    #cfcfcf 0%,
+    #b0b0b0 100%
+  );
+}
+.tech-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  /* Fondamentale per il touch: senza questo, il primo tocco sul canvas
+     verrebbe interpretato dal browser come "inizio scroll pagina" e i
+     movimenti del dito non arriverebbero mai a Three.js/Rapier. */
+  touch-action: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .tech-balls-container {
+    height: 50vh;
+    min-height: 320px;
+  }
+}
