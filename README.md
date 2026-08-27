@@ -1,7 +1,7 @@
 # DEC — Emi Interactive Portfolio
 
 ![Preview](docs/preview.png)
-> Placeholder mockup above — swap `docs/preview.png` 
+
 
 
 # DEC — Emi Interactive Portfolio
