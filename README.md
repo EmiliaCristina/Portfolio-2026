@@ -1,3 +1,5 @@
+> Placeholder mockup above — swap `docs/preview.png`
+
 # DEC — Emi Interactive Portfolio
 
 Interactive 3D portfolio for **Emilia Cristina Duculet (Emi)** — 3D
