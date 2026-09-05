@@ -16,10 +16,8 @@ function Scene() {
 
       {/* 
         Logo posizionato dietro Emy.
-        Poiché Emy è a Z = -1.5, mettiamo il logo a Z = -3.5.
-        Regola scale e la Y per centrarlo al meglio rispetto alla tua inquadratura.
       */}
-      {/* Ridotto scale a 1.2 per ridimensionarlo e avvicinato a Z = -2.2 */}
+    
 <BackgroundLogo position={[0, -0.6, -2.2]} scale={[1.9, 1.9, 1]} />
 
       <EmiModel position={[0, -1.3, -1.5]} />
