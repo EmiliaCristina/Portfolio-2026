@@ -310,7 +310,7 @@ border: 1px solid rgba(255, 255, 255, 0.26);
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
-  transform: translate(-4px, -34px);
+  transform: translate(-24px, -84px);
 }
 
 .c-emi_hint_3d:hover {
