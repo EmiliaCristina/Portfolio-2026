@@ -306,13 +306,11 @@ border: 1px solid rgba(255, 255, 255, 0.26);
   font-family: monospace;
   font-size: 14px;
   color: #0cf72b;
-  
   padding: 6px 12px;
-  
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
-  
+  transform: translate(-4px, -4px);
 }
 
 .c-emi_hint_3d:hover {
