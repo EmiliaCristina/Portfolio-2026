@@ -1,0 +1,262 @@
+/* ------------------------------------------------------------------ */
+/*  Navbar fissa in alto — condivisa da home e pagine standalone       */
+/*  Tipografia e pillole allineate al resto del sito (Syne, sentence   */
+/*  case, pillole bianche con ombra soffusa, come .page-back-link e   */
+/*  le scelte di dialogo in emi.css) invece di un maiuscolo/tracking   */
+/*  "da app" estraneo al resto del progetto.                          */
+/* ------------------------------------------------------------------ */
+
+.emi-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000; /* sotto al popup home (10000), sopra a tutto il resto */
+  font-family: 'Syne', sans-serif;
+
+  /* Nascosta finché isVisible non diventa true (home: dopo il primo
+     click sulla conversazione; altre pagine: sempre). visibility,
+     oltre a opacity, la toglie anche dal tab-order/screen reader. */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-14px);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.emi-navbar.emi-navbar--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.emi-navbar-inner {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+  background: rgba(244, 244, 245, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.08);
+}
+
+.emi-navbar-brand {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #141414;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.emi-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.emi-navbar-link {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #141414;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 6px 2px;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.emi-navbar-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: #009087;
+  transition: right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.emi-navbar-link:hover {
+  color: #009087;
+}
+
+.emi-navbar-link:hover::after {
+  right: 0;
+}
+
+/* CV: stessa pillola bianca con ombra soffusa di .page-back-link, per
+   restare coerente con le altre azioni "di navigazione" del sito. */
+.emi-navbar-cv {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #141414;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid rgba(20, 20, 20, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  padding: 9px 20px;
+  border-radius: 999px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.emi-navbar-cv:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Contact: pulsante + pannello a comparsa --- */
+
+.emi-navbar-contact {
+  position: relative;
+}
+
+.emi-navbar-contact-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: -10px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(20, 20, 20, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  padding: 10px;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: emi-navbar-contact-in 0.2s ease-out;
+}
+
+@keyframes emi-navbar-contact-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.emi-navbar-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: #141414;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: background 0.2s ease;
+}
+
+.emi-navbar-contact-item:hover {
+  background: #f0f0f0;
+}
+
+.emi-navbar-contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e8e8e8;
+  color: #141414;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* --- Hamburger mobile: nascosto su desktop --- */
+
+.emi-navbar-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(20, 20, 20, 0.12);
+  background: #ffffff;
+  color: #141414;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.emi-navbar-mobile-panel {
+  background: rgba(244, 244, 245, 0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.08);
+  padding: 18px 6vw 26px 6vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: emi-navbar-mobile-in 0.22s ease-out;
+}
+
+@keyframes emi-navbar-mobile-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.emi-navbar-mobile-link {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #141414;
+  text-decoration: none;
+  padding: 12px 4px;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.06);
+}
+
+.emi-navbar-mobile-contacts {
+  display: flex;
+  gap: 12px;
+  padding: 16px 4px 4px 4px;
+}
+
+.emi-navbar-mobile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e8e8e8;
+  color: #141414;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.emi-navbar-cv--mobile {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  padding: 13px 20px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Responsive breakpoint                                              */
+/* ------------------------------------------------------------------ */
+
+@media only screen and (max-width: 860px) {
+  .emi-navbar-links {
+    display: none;
+  }
+  .emi-navbar-burger {
+    display: flex;
+  }
+  .emi-navbar-inner {
+    padding: 0 5vw;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .emi-navbar-brand {
+    font-size: 12.5px;
+  }
+}
