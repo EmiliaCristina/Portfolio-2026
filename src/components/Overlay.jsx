@@ -172,10 +172,6 @@ export default function Overlay() {
   return (
     <div className={`c-emi_main ${hasStarted ? 'is-active' : 'is-idle'}`}>
       
-      {/* Scritta fissa in alto a destra sempre presente sullo schermo */}
-      <div className="portfolio-watermark">
-        Portfolio 2026
-      </div>
 
       {hasStarted && (
         <div className="c-emi_panel" ref={panelRef}>
