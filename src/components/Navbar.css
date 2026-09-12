@@ -51,6 +51,12 @@
   white-space: nowrap;
 }
 
+.emi-navbar-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
 .emi-navbar-links {
   display: flex;
   align-items: center;
@@ -256,7 +262,7 @@
 }
 
 @media only screen and (max-width: 420px) {
-  .emi-navbar-brand {
-    font-size: 12.5px;
+  .emi-navbar-logo {
+    height: 26px;
   }
 }
