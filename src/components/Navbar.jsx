@@ -71,9 +71,9 @@ const Navbar = () => {
   return (
     <header className={`emi-navbar${isVisible ? ' emi-navbar--visible' : ''}`}>
       <div className="emi-navbar-inner">
-        <Link to="/" className="emi-navbar-brand" onClick={closeMobile}>
-          Duculet Emilia Cristina
-        </Link>
+       <Link to="/" className="emi-navbar-brand" onClick={closeMobile}>
+  <img src={publicUrl('/images/DEC.png')} alt="Duculet Emilia Cristina" className="emi-navbar-logo" />
+</Link>
 
         <nav className="emi-navbar-links" aria-label="Navigazione principale">
           {NAV_LINKS.map((link) => (
