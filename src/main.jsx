@@ -6,6 +6,8 @@ import WorkPage from './pages/WorkPage';
 import WorkDetailPage from './pages/WorkDetailPage';
 import WhatIDoPage from './pages/WhatIDoPage';
 import AboutPage from './pages/AboutPage';
+import Navbar from './components/Navbar';
+
 
 // HashRouter (URL del tipo /#/work) invece di BrowserRouter: funziona
 // sempre, anche aprendo il link in una nuova scheda o in produzione su
@@ -14,6 +16,10 @@ import AboutPage from './pages/AboutPage';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <HashRouter>
+      {/* Navbar fissa, montata una sola volta sopra alle Routes: resta
+          identica e sempre visibile sia sulla home (esperienza 3D) sia
+          su tutte le pagine standalone, senza doverla ripetere ovunque. */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<EmiExperience />} />
         <Route path="/work" element={<WorkPage />} />
