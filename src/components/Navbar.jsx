@@ -54,13 +54,8 @@ const Navbar = () => {
   const location = useLocation();
   const hasStarted = useDialogueStore((s) => s.hasStarted);
 
-  // Sulla home la navbar resta nascosta finché l'utente non clicca la
-  // prima scelta nella conversazione (per non rovinare l'ingresso in
-  // scena del personaggio). Su tutte le altre pagine, dove non c'è
-  // nessuna conversazione, è sempre visibile.
   const isVisible = location.pathname !== '/' || hasStarted;
 
-  // Chiude il popover Contact se si clicca fuori.
   useEffect(() => {
     if (!contactOpen) return undefined;
     const onClick = (e) => {
@@ -72,7 +67,6 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', onClick);
   }, [contactOpen]);
 
-  // Chiude entrambi i menu con Esc.
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') {
@@ -93,7 +87,6 @@ const Navbar = () => {
           Emilia Duculet
         </Link>
 
-        {/* Link desktop, nascosti sotto la soglia mobile via CSS */}
         <nav className="emi-navbar-links" aria-label="Navigazione principale">
           {NAV_LINKS.map((link) => (
             <Link key={link.to} to={link.to} className="emi-navbar-link">
@@ -131,16 +124,11 @@ const Navbar = () => {
             )}
           </div>
 
-          
-            href={publicUrl('/cv-emilia.pdf')}
-            download
-            className="emi-navbar-cv"
-          >
+          <a href={publicUrl('/cv-emilia.pdf')} download className="emi-navbar-cv">
             CV
           </a>
         </nav>
 
-        {/* Hamburger, visibile solo sotto la soglia mobile via CSS */}
         <button
           type="button"
           className="emi-navbar-burger"
@@ -152,16 +140,10 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Pannello mobile a tendina */}
       {mobileOpen && (
         <div className="emi-navbar-mobile-panel">
           {NAV_LINKS.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="emi-navbar-mobile-link"
-              onClick={closeMobile}
-            >
+            <Link key={link.to} to={link.to} className="emi-navbar-mobile-link" onClick={closeMobile}>
               {link.label}
             </Link>
           ))}
