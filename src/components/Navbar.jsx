@@ -72,7 +72,7 @@ const Navbar = () => {
     <header className={`emi-navbar${isVisible ? ' emi-navbar--visible' : ''}`}>
       <div className="emi-navbar-inner">
         <Link to="/" className="emi-navbar-brand" onClick={closeMobile}>
-          Emilia Duculet
+          Duculet Emilia Cristina
         </Link>
 
         <nav className="emi-navbar-links" aria-label="Navigazione principale">
