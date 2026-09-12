@@ -6,18 +6,6 @@ import { publicUrl } from '../utils/publicUrl';
 import { useDialogueStore } from '../DialogueEngine';
 import './Navbar.css';
 
-/**
- * Navbar fissa in alto, sempre visibile, presente su tutte le pagine
- * (montata una sola volta in main.jsx, sopra alle <Routes>). Usa
- * react-router <Link> per Work/About/Services così funziona in modo
- * identico sia sulla home (esperienza 3D) sia sulle pagine standalone,
- * senza dipendere dal popup in-page (useModalStore), che oggi vive solo
- * dentro EmiExperience.
- *
- * "Contact" non è un link ma un piccolo pannello a comparsa con gli
- * stessi contatti già usati nel pannello di dialogo (email, WhatsApp,
- * LinkedIn, ArtStation), per non dover creare una pagina/route dedicata.
- */
 const NAV_LINKS = [
   { label: 'Work', to: '/work' },
   { label: 'About', to: '/about' },
@@ -108,8 +96,7 @@ const Navbar = () => {
             {contactOpen && (
               <div className="emi-navbar-contact-panel" role="menu">
                 {CONTACT_LINKS.map((c) => (
-                  
-                    key={c.label}
+                  <a key={c.label}
                     href={c.href}
                     target={c.href.startsWith('http') ? '_blank' : undefined}
                     rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -150,8 +137,7 @@ const Navbar = () => {
 
           <div className="emi-navbar-mobile-contacts">
             {CONTACT_LINKS.map((c) => (
-              
-                key={c.label}
+              <a key={c.label}
                 href={c.href}
                 target={c.href.startsWith('http') ? '_blank' : undefined}
                 rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -163,8 +149,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          
-            href={publicUrl('/cv-emilia.pdf')}
+          <a href={publicUrl('/cv-emilia.pdf')}
             download
             className="emi-navbar-cv emi-navbar-cv--mobile"
             onClick={closeMobile}
