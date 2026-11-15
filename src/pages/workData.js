@@ -14,20 +14,31 @@ export const workProjects = [
     role: "3D Artist / Character Modeler",
     process: "Sculpt → Retopo → Optimization → STL Assembly",
     output: "Modular, 3D-printable collectible figure",
+    // Al posto dell'immagine hero mostra il viewer 3D della pipeline
+    // (principio Feather Atlas), vedi src/pages/mycro/.
+    atlas: "mycro",
   },
   {
     id: 2,
-    title: "3D CHARACTER / FACIAL MODELING",
-    category: "Character Modeling · Sculpting · Texturing",
-    tools: "Blender, Zbrush, Substance painter, Rigging, Morphs, Retopo",
+    title: "3D CHARACTERS",
+    category: "Character Design · Modeling · Rigging · Facial Expressions",
+    tools: "Blender, Mixamo, Shape Keys, Hand-painted Textures, Three.js",
     image: "/images/Character.webp",
     detailImage: "/images/Character-detail.webp",
-    alt: "Anteprima Progetto Due",
+    alt: "3D characters by Emilia Duculet",
     description:
-      "A game-ready character built for real-time engines: high-poly sculpt in ZBrush, retopologized and optimized in Blender, with a full rig, facial morphs and a ready-to-use animation set for Unity and Unreal Engine.",
+      "Characters are the core of my work: creatures, stylised and realistic, young and old. The showreel gives the range; Vira Nyx is the deep dive, from pencil sketch to a real-time character modelled in Blender, rigged on a Mixamo skeleton, given twelve facial shape keys and hand-painted skin, then optimised into a 7.6 MB asset you can turn, animate and make expressions with right here.",
     role: "3D Character Artist",
-    process: "High-poly Sculpt → Retopo → Rig → Facial Morphs → Optimization",
-    output: "Game-ready rigged character (Unity / Unreal)",
+    process: "Concept → Model → Rig → Facial Shape Keys → Web Optimisation",
+    output: "Character showreel + rigged, animated real-time character (glTF)",
+    // Testata con lo showreel (estratto in loop + video completo), vedi CharacterReel.
+    reel: {
+      loop: "/videos/characters-loop.mp4",
+      full: "/videos/showreel-full.mp4",
+      poster: "/images/reel-poster.webp",
+    },
+    // Viewer 3D dedicato a Vira, vedi src/pages/vira/.
+    atlas: "vira",
   },
   {
     id: 3,

@@ -1,0 +1,107 @@
+/* Aggiunte di Vira Atlas sopra lo stile di base di Mycro Atlas (.ma-*) */
+
+.va-tabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.va-tabs .ma-tab {
+  flex: 0 1 118px;
+}
+.va-thumb {
+  object-fit: cover;
+  background: #ddd;
+}
+
+/* chip delle animazioni (fase Rig) */
+.va-clips {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--ma-panel);
+  border: 1px solid var(--ma-line);
+  animation: ma-rise 0.5s var(--ma-ease) backwards;
+}
+.va-chip {
+  height: 30px;
+  padding: 0 13px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  transition: background-color 0.25s, color 0.25s;
+}
+.va-chip:hover {
+  background: var(--ma-chip);
+}
+.va-chip[aria-pressed='true'] {
+  background: var(--ma-accent);
+  color: var(--ma-accent-ink);
+}
+
+/* fase Face: preset e slider */
+.va-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 18px;
+}
+.va-presets .va-chip {
+  background: var(--ma-chip);
+}
+.va-presets .va-chip[aria-pressed='true'] {
+  background: var(--ma-accent);
+}
+.va-sliders {
+  display: grid;
+  gap: 2px;
+  margin: 2px 0 8px;
+}
+.va-slider {
+  display: grid;
+  grid-template-columns: 92px 1fr 30px;
+  gap: 12px;
+  align-items: center;
+  font-size: 12.5px;
+  padding: 3px 0;
+}
+.va-slider span {
+  color: var(--ma-muted);
+}
+.va-slider output {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.va-slider input[type='range'] {
+  width: 100%;
+  accent-color: var(--ma-accent);
+  cursor: pointer;
+}
+
+.va-lens {
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 600px) {
+  .va-tabs .ma-tab {
+    flex: 1 0 64px;
+  }
+  .va-clips {
+    top: auto;
+    bottom: 74px;
+  }
+  .va-chip {
+    padding: 0 10px;
+  }
+}
+
+/* pulsante Restore position: separato dagli altri controlli */
+.va-restore {
+  margin-top: 6px;
+}

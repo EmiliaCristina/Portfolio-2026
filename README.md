@@ -142,3 +142,47 @@ React 18 · Vite · `@react-three/fiber` · `@react-three/drei` ·
 `@react-three/rapier` (tech-stack ball pit physics) ·
 `@react-three/postprocessing` · GSAP · Zustand · React Router
 (`HashRouter`) · custom GLSL (fur shells, CRT-style screen).
+
+## Mycro Atlas (scheda Work di Mycro)
+
+Viewer 3D della pipeline di Mycro con il principio di Feather Atlas: 4 tab
+(Sculpt, Retopo, Print, Final), pannello info a destra, drag/zoom/inerzia,
+giri 90°/360°, vista espansa, luce giorno/sera, close-up sulla turbina.
+
+- Codice: `src/pages/mycro/` (dati in `mycroAtlasData.js`).
+- Si attiva con `atlas: "mycro"` sul progetto in `src/pages/workData.js`.
+- Modelli: `public/models/mycro.glb` (retopo dipinto) e
+  `public/models/mycro-parts.glb` (11 STL di stampa, decimati da 13,6M a
+  ~250k triangoli, allineati al GLB e compressi con meshopt).
+
+## Vira Atlas (scheda Work "Vira Nyx / 3D Character")
+
+Viewer dedicato a Vira, separato da Mycro Atlas (ne riusa solo il CSS).
+Fasi: Concept (sketch), Model (clay + wireframe a quad), Rig (scheletro +
+clip Idle/Walk/Run/Roll), Face (12 shape keys, preset, blink, sguardo che
+segue il puntatore), Final (texture dipinte a mano).
+
+- Codice: `src/pages/vira/` (testi in `viraAtlasData.js`).
+- Si attiva con `atlas: "vira"` sul progetto 2 in `src/pages/workData.js`.
+- Modello: `public/models/vira.glb` (7,6 MB, meshopt + WebP), costruito da
+  `red.blend` con lo script `build_vira_glb.py` (vedi zip degli asset):
+  shape keys copiate per indice, UDIM convertite, capelli/ciglia con
+  texture procedurali, clip Mixamo retargettate sul rest in A-pose.
+- Immagini: `public/images/vira/` (sketch ritagliato e miniature dei tab).
+
+## Usabilità dei viewer (Mycro e Vira)
+
+- Rotazione "a giradischi": in orizzontale gira senza limiti, l'inclinazione
+  verticale è limitata a ~24°, quindi il modello non finisce mai sottosopra.
+- Da ingranditi (zoom > 1,12, o fase Face di Vira) il trascinamento verticale
+  e le frecce su/giù scorrono lungo il personaggio invece di inclinarlo.
+- Pulsante "Restore position" nella barra a sinistra: rotazione, zoom e
+  scorrimento tornano allo stato iniziale (anche doppio clic o tasto 0).
+
+## Showreel nella scheda "3D Characters"
+
+- `src/pages/CharacterReel.jsx`: testata con l'estratto muto in loop
+  (`public/videos/characters-loop.mp4`, 2,6 MB) e il pulsante "Watch full
+  showreel" che apre il video completo (`public/videos/showreel-full.mp4`,
+  24,6 MB, 1080p) in una finestra. Il completo si scarica solo se aperto.
+- Si attiva con il campo `reel` del progetto 2 in `workData.js`.

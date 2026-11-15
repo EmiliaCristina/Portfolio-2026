@@ -1,0 +1,161 @@
+/* Testata showreel della scheda "3D Characters" */
+
+.creel {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 0 0 22px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #111;
+}
+.creel-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.creel-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0) 42%);
+  pointer-events: none;
+}
+.creel-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 26px;
+  color: #fff;
+}
+.creel-eyebrow {
+  margin: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+.creel-title {
+  margin: 4px 0 0;
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.creel-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: none;
+  height: 42px;
+  padding: 0 18px 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #141414;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+.creel-play svg {
+  width: 18px;
+  height: 18px;
+  fill: #0f7e6f;
+}
+.creel-play:hover {
+  transform: translateY(-1px);
+  background: #fff;
+}
+.creel-play:focus-visible,
+.creel-close:focus-visible {
+  outline: 2px solid #0f7e6f;
+  outline-offset: 3px;
+}
+
+/* sottotitolo prima del viewer di Vira */
+.creel-deepdive {
+  margin: 34px 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #666;
+  font-weight: 600;
+}
+
+/* finestra con il video completo */
+.creel-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: grid;
+  place-items: center;
+  padding: 4vmin;
+  background: rgba(8, 8, 8, 0.86);
+  backdrop-filter: blur(6px);
+  animation: creel-in 0.3s ease-out;
+}
+.creel-frame {
+  position: relative;
+  width: min(100%, 1280px);
+  aspect-ratio: 16 / 9;
+  max-height: 100%;
+}
+.creel-full {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: #000;
+}
+.creel-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+.creel-close svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: #141414;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+@keyframes creel-in {
+  from { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .creel {
+    border-radius: 16px;
+  }
+  .creel-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+  .creel-play {
+    height: 38px;
+    font-size: 12.5px;
+  }
+  .creel-close {
+    top: -48px;
+    right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creel-modal { animation: none; }
+}

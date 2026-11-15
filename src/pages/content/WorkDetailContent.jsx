@@ -1,5 +1,12 @@
+import { lazy, Suspense } from 'react';
 import '../WorkDetailPage.css';
 import { publicUrl } from '../../utils/publicUrl';
+import CharacterReel from '../CharacterReel';
+
+// Caricato solo quando serve: i modelli 3D di Mycro non pesano sulle
+// altre schede.
+const MycroAtlas = lazy(() => import('../mycro/MycroAtlas'));
+const ViraAtlas = lazy(() => import('../vira/ViraAtlas'));
 
 /**
  * `onBack` è la callback per tornare alla lista: nella pagina/route è
@@ -32,12 +39,26 @@ const WorkDetailContent = ({ project, onBack, backLabel = 'Torna a My Work' }) =
         </div>
       </header>
 
-      <div className="project-hero-image">
-        <img
-          src={publicUrl(project.detailImage ? project.detailImage : project.image)}
-          alt={project.alt}
-        />
-      </div>
+      {project.atlas === 'mycro' ? (
+        <Suspense fallback={<div className="ma-suspense" aria-hidden="true" />}>
+          <MycroAtlas />
+        </Suspense>
+      ) : project.atlas === 'vira' ? (
+        <>
+          {project.reel && <CharacterReel {...project.reel} />}
+          {project.reel && <p className="creel-deepdive">Deep dive · Vira Nyx</p>}
+          <Suspense fallback={<div className="ma-suspense" aria-hidden="true" />}>
+            <ViraAtlas />
+          </Suspense>
+        </>
+      ) : (
+        <div className="project-hero-image">
+          <img
+            src={publicUrl(project.detailImage ? project.detailImage : project.image)}
+            alt={project.alt}
+          />
+        </div>
+      )}
 
       <section className="project-content">
         <div className="content-grid">
