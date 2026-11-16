@@ -84,7 +84,7 @@ const HomeModal = () => {
           <button
             type="button"
             className="home-modal-close"
-            aria-label="Chiudi"
+            aria-label="Close"
             onClick={close}
           >
             ×
@@ -97,7 +97,7 @@ const HomeModal = () => {
               <WorkDetailContent
                 project={project}
                 onBack={closeWork}
-                backLabel="Torna a My Work"
+                backLabel="Back to Work"
               />
             ) : (
               <WorkGridContent onSelect={(p) => openWork(p.id)} />

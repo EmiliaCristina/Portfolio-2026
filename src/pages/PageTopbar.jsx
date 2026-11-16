@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
  * nome/brand. `backTo` è opzionale, per pagine annidate come il
  * dettaglio di un progetto (torna alla lista Work invece che alla home).
  */
-const PageTopbar = ({ backTo = '/', backLabel = "Torna a Emi" }) => {
+const PageTopbar = ({ backTo = '/', backLabel = "Back to Emi" }) => {
   return (
     <div className="page-topbar">
       <Link to={backTo} className="page-back-link">

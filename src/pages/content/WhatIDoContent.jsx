@@ -6,6 +6,15 @@ import '../TechStackBalls.css';
 // lazy così le altre pagine/il popup restano leggeri e veloci.
 const TechStackBalls = lazy(() => import('../TechStackBalls'));
 
+// La stessa stack delle sfere, scritta a pennarello su post-it: si legge subito.
+const STACK_NOTE = [
+  { name: 'Design', color: 'yellow', items: ['Photoshop', 'Illustrator', 'After Effects', 'Premiere'] },
+  { name: '3D Art', color: 'pink', items: ['Blender', 'ZBrush', 'Maya', '3ds Max', 'Substance Painter'] },
+  { name: 'Game Engines', color: 'blue', items: ['Unity', 'Unreal'] },
+  { name: 'Coding', color: 'green', items: ['JavaScript', 'HTML', 'CSS', 'C#', 'C++', 'Three.js', 'WebGL', 'GitHub'] },
+  { name: 'Also', color: 'orange', items: ['React', 'R3F', 'GSAP', 'WordPress', 'AI tools as work accelerators'] },
+];
+
 const services = [
   {
     title: '3D ART',
@@ -44,6 +53,7 @@ const services = [
 
 const WhatIDoContent = () => {
   const [activeCard, setActiveCard] = useState(null);
+
 
   return (
     <>
@@ -104,13 +114,23 @@ const WhatIDoContent = () => {
         My <span>Stack</span>
       </h1>
       <p className="stack-hint">
-        Muovi il mouse (o il dito, su schermo touch) sopra le sfere.
+        Move your mouse (or finger) over the spheres.
       </p>
-      <Suspense
-        fallback={<div className="tech-balls-fallback">Loading stack…</div>}
-      >
-        <TechStackBalls />
-      </Suspense>
+      <div className="stack-wrap">
+        <Suspense
+          fallback={<div className="tech-balls-fallback">Loading stack…</div>}
+        >
+          <TechStackBalls />
+        </Suspense>
+        <aside className="stack-notes" aria-label="Tech stack">
+          {STACK_NOTE.map((g, i) => (
+            <div key={g.name} className={`stack-postit stack-postit-${g.color}`} style={{ '--r': `${[-4, 3, -2, 2.5, -3][i]}deg` }}>
+              <b>{g.name}</b>
+              <span>{g.items.join(' · ')}</span>
+            </div>
+          ))}
+        </aside>
+      </div>
     </>
   );
 };

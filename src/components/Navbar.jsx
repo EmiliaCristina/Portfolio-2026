@@ -119,7 +119,7 @@ const Navbar = () => {
         <button
           type="button"
           className="emi-navbar-burger"
-          aria-label={mobileOpen ? 'Chiudi menu' : 'Apri menu'}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
         >

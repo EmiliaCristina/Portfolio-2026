@@ -112,3 +112,9 @@ export function cropStyle(url, crop, W, H, size = PIPELINE_SIZE) {
     backgroundPosition: `${-x * s + (W - w * s) / 2}px ${-y * s + (H - h * s) / 2}px`,
   };
 }
+
+// Foto reali delle stampe, mostrate sotto lo stadio "Print".
+export const PRINTS = [
+  { img: '/images/mycro/print-resin.webp', label: 'Resin parts' },
+  { img: '/images/mycro/print-assembled.webp', label: 'Assembled print' },
+];

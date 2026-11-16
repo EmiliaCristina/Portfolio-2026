@@ -606,3 +606,16 @@
     animation-delay: 0s !important;
   }
 }
+
+/* foto reali delle stampe sotto lo stadio Print */
+.ma-prints { margin-top: 22px; }
+.ma-prints-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ma-prints-row button { padding: 0; border: 0 !important; background: none; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.ma-prints-row img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; display: block; transition: transform .3s, box-shadow .3s; }
+.ma-prints-row button:hover img, .ma-prints-row button:focus-visible img { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,.18); }
+.ma-prints-row span { display: block; margin-top: 6px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+.ma-photo { position: fixed; inset: 0; z-index: 100000; background: rgba(10,10,10,.86); display: grid; place-items: center; padding: 24px; }
+.ma-photo figure { position: relative; margin: 0; max-width: min(1100px, 100%); }
+.ma-photo img { display: block; max-width: 100%; max-height: 82vh; border-radius: 12px; }
+.ma-photo figcaption { color: #eee; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-top: 10px; }
+.ma-photo button { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: #141414; font-size: 24px; line-height: 1; cursor: pointer; }

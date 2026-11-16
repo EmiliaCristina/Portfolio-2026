@@ -7,13 +7,17 @@ import CharacterReel from '../CharacterReel';
 // altre schede.
 const MycroAtlas = lazy(() => import('../mycro/MycroAtlas'));
 const ViraAtlas = lazy(() => import('../vira/ViraAtlas'));
+const JungleGallery = lazy(() => import('../jungle/JungleGallery'));
+const BrandBook = lazy(() => import('../brand/BrandBook'));
+const AdShowcase = lazy(() => import('../ad/AdShowcase'));
+const IpShowcase = lazy(() => import('../ip/IpShowcase'));
 
 /**
  * `onBack` è la callback per tornare alla lista: nella pagina/route è
  * una navigate('/work'), nel popup è semplicemente uno stato locale.
  * `backLabel` cambia di conseguenza il testo del link.
  */
-const WorkDetailContent = ({ project, onBack, backLabel = 'Torna a My Work' }) => {
+const WorkDetailContent = ({ project, onBack, backLabel = 'Back to Work' }) => {
   const formattedId = project.id < 10 ? `0${project.id}` : project.id;
 
   return (
@@ -51,6 +55,22 @@ const WorkDetailContent = ({ project, onBack, backLabel = 'Torna a My Work' }) =
             <ViraAtlas />
           </Suspense>
         </>
+      ) : project.atlas === 'brand' ? (
+        <Suspense fallback={<div className="ma-suspense" aria-hidden="true" />}>
+          <BrandBook />
+        </Suspense>
+      ) : project.atlas === 'ad' ? (
+        <Suspense fallback={<div className="ma-suspense" aria-hidden="true" />}>
+          <AdShowcase />
+        </Suspense>
+      ) : project.atlas === 'ip' ? (
+        <Suspense fallback={<div className="ma-suspense" aria-hidden="true" />}>
+          <IpShowcase />
+        </Suspense>
+      ) : project.atlas === 'jungle' ? (
+        <Suspense fallback={<div className="ma-suspense" aria-hidden="true" />}>
+          <JungleGallery />
+        </Suspense>
       ) : (
         <div className="project-hero-image">
           <img

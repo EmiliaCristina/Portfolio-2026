@@ -1,0 +1,54 @@
+/* Interactive 3D Portfolio: blocchi chiari, accento verde acqua della home */
+.ip { margin: 8px 0 40px; color: #141414; }
+.ip button { border: 0 !important; font: inherit; cursor: pointer; }
+.ip-blk { background: #fff; border-radius: 24px; overflow: hidden; margin-bottom: 22px; }
+.ip-in { padding: 52px 54px; }
+.ip-ey { margin: 0 0 12px; font-size: 11px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: #12806f; }
+.ip h2 { margin: 0 0 14px; font-weight: 800; font-size: clamp(26px, 3vw, 34px); letter-spacing: -.5px; line-height: 1.1; text-transform: none; }
+.ip-lead { max-width: 680px; margin: 0; color: #555; font-size: 15px; line-height: 1.65; }
+
+.ip-hero { position: relative; aspect-ratio: 1280 / 560; width: 100%; background: #f2f2f2; }
+.ip-hero img, .ip-hero video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ip-badge { position: absolute; left: 24px; top: 22px; background: #141414; color: #fff; font-size: 12px; font-weight: 700; padding: 7px 12px; border-radius: 999px; }
+.ip-badge i { color: #3fe0a6; font-style: normal; }
+.ip-try { position: absolute; right: 24px; bottom: 22px; background: #3fe0a6; color: #06231c; font-weight: 700; padding: 14px 24px; border-radius: 999px; font-size: 15px; text-decoration: none; box-shadow: 0 14px 30px rgba(0,0,0,.18); transition: transform .25s; }
+.ip-try:hover, .ip-try:focus-visible { transform: translateY(-2px); }
+
+.ip-evo { display: grid; grid-template-columns: 1fr 64px 1fr; align-items: center; gap: 10px; margin-top: 34px; }
+.ip-card { position: relative; margin: 0; height: 400px; border-radius: 18px; overflow: hidden; }
+.ip-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ip-card-web { background: #e9e9ea; }
+.ip-card-web img { object-position: 50% 45%; }
+.ip-card figcaption { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; }
+.ip-card figcaption b { background: #fff; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 7px 11px; border-radius: 8px; }
+.ip-card figcaption span { background: rgba(20,20,20,.75); color: #fff; font-size: 12px; padding: 6px 10px; border-radius: 999px; }
+.ip-arrow { font-size: 34px; text-align: center; color: #12806f; }
+.ip-stats { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; padding: 0; }
+.ip-stats li { background: #f2f4f3; border-radius: 12px; padding: 12px 16px; }
+.ip-stats b { display: block; font-size: 22px; }
+.ip-stats span { font-size: 12px; color: #666; }
+
+.ip-hood { display: grid; grid-template-columns: 1.3fr 1fr; gap: 26px; margin-top: 30px; }
+.ip-stage { position: relative; height: 460px; border-radius: 18px; overflow: hidden; background: radial-gradient(circle at 50% 35%, #f7f7f7, #cfd4d2); cursor: grab; }
+.ip-stage:active { cursor: grabbing; }
+.ip-stage canvas { position: absolute !important; inset: 0; }
+.ip-hint { position: absolute; right: 14px; top: 14px; background: rgba(255,255,255,.85); font-size: 12px; padding: 6px 10px; border-radius: 999px; pointer-events: none; }
+.ip-tog { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; gap: 6px; background: #fff; padding: 5px; border-radius: 999px; box-shadow: 0 8px 20px rgba(0,0,0,.12); }
+.ip-tog button { font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 999px; color: #444; background: transparent; white-space: nowrap; }
+.ip-tog button[aria-pressed='true'] { background: #141414; color: #fff; }
+.ip-feat { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-content: start; }
+.ip-feat li { border: 1px solid #e6e6e6; border-radius: 14px; padding: 16px; }
+.ip-feat i { font-style: normal; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: #dff7ef; color: #12806f; margin-bottom: 8px; font-size: 15px; }
+.ip-feat b { display: block; font-size: 15px; margin-bottom: 4px; }
+.ip-feat span { font-size: 13px; color: #666; line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .ip-in { padding: 34px 22px; }
+  .ip-evo { grid-template-columns: 1fr; }
+  .ip-arrow { transform: rotate(90deg); }
+  .ip-card { height: 320px; }
+  .ip-hood { grid-template-columns: 1fr; }
+  .ip-stage { height: 400px; }
+  .ip-feat { grid-template-columns: 1fr; }
+  .ip-try { padding: 11px 18px; font-size: 14px; }
+}

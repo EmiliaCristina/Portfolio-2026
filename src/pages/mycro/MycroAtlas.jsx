@@ -2,7 +2,8 @@ import { Component, Suspense, useCallback, useEffect, useRef, useState } from 'r
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import MycroScene, { rotateBy, HOME } from './MycroScene';
-import { STAGES, SWATCHES, CLOSEUP, PIPELINE_IMG, cropStyle } from './mycroAtlasData';
+import { createPortal } from 'react-dom';
+import { STAGES, SWATCHES, CLOSEUP, PIPELINE_IMG, PRINTS, cropStyle } from './mycroAtlasData';
 import { publicUrl } from '../../utils/publicUrl';
 import './MycroAtlas.css';
 
@@ -62,6 +63,7 @@ export default function MycroAtlas() {
   const [leaving, setLeaving] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [photo, setPhoto] = useState(null);
   const [zi, setZi] = useState(true);
   const [cu, setCu] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -396,6 +398,19 @@ export default function MycroAtlas() {
                 </div>
               ))}
             </dl>
+            {s.id === 'print' && (
+              <div className="ma-prints" style={{ '--i': 6 }}>
+                <h3 className="ma-h2">From the printer</h3>
+                <div className="ma-prints-row">
+                  {PRINTS.map((p) => (
+                    <button key={p.img} type="button" onClick={() => setPhoto(p)} aria-label={`Open photo: ${p.label}`}>
+                      <img src={publicUrl(p.img)} alt="" loading="lazy" />
+                      <span>{p.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             <button
               type="button"
               className="ma-closeup"
@@ -413,7 +428,30 @@ export default function MycroAtlas() {
           </article>
         </div>
       </div>
+      {photo && <PhotoBox item={photo} onClose={() => setPhoto(null)} />}
     </section>
+  );
+}
+
+function PhotoBox({ item, onClose }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    ref.current?.focus();
+    const onKey = (e) => { if (e.key === 'Escape') { e.stopPropagation(); onClose(); } };
+    window.addEventListener('keydown', onKey, true);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', onKey, true); document.body.style.overflow = prev; };
+  }, [onClose]);
+  return createPortal(
+    <div className="ma-photo" role="dialog" aria-modal="true" aria-label={item.label} onClick={onClose}>
+      <figure onClick={(e) => e.stopPropagation()}>
+        <img src={publicUrl(item.img)} alt={`Mycro, ${item.label}`} />
+        <figcaption>{item.label}</figcaption>
+        <button ref={ref} type="button" aria-label="Close" onClick={onClose}>×</button>
+      </figure>
+    </div>,
+    document.body,
   );
 }
 

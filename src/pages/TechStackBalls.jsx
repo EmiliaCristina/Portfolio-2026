@@ -58,7 +58,7 @@ function SphereGeo({ vec = new THREE.Vector3(), scale, r = THREE.MathUtils.randF
   const api = useRef(null);
 
   useFrame((_state, delta) => {
-    if (!isActive) return;
+    if (!isActive || !api.current) return;
     delta = Math.min(0.1, delta);
     const impulse = vec
       .copy(api.current.translation())

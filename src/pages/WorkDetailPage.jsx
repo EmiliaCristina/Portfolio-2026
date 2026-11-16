@@ -15,7 +15,7 @@ const WorkDetailPage = () => {
 
   return (
     <div className="page-shell">
-      <PageTopbar backTo="/work" backLabel="Torna a My Work" />
+      <PageTopbar backTo="/work" backLabel="Back to Work" />
       <WorkDetailContent project={project} />
     </div>
   );
