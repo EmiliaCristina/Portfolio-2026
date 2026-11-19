@@ -34,6 +34,32 @@ export const COMPARE = {
   right: 'Blender · clay',
 };
 
+/* Spot narrativo AI "A year looking for a parking spot" (concept, Kling).
+   seasons: riquadri che fanno partire la clip al passaggio del mouse */
+export const CAR = {
+  badge: 'Concept · AI',
+  label: 'Car dealership spot',
+  video: '/videos/ad/car-spot.mp4',
+  poster: '/images/ad/car-poster.webp',
+  duration: '0:36 · with sound',
+  eyebrow: 'AI short film · Kling',
+  title: 'A year looking for a parking spot.',
+  text:
+    'A narrative car commercial set in Turin: Marco circles the same street through four seasons, until a small city car slips into the spot he passed by. Images in Kling Image 4.0, shots from start and end frames, then edit, grade, end card and sound design.',
+  tags: ['Storytelling', 'AI image & video', 'Character consistency', 'Edit & color', 'Sound design'],
+  seasonsTitle: 'Four seasons, one shot',
+  seasons: [
+    { id: 'winter', label: 'Winter', img: '/images/ad/car-winter.webp', video: '/videos/ad/car-winter.mp4' },
+    { id: 'spring', label: 'Spring', img: '/images/ad/car-spring.webp', video: '/videos/ad/car-spring.mp4' },
+    { id: 'summer', label: 'Summer', img: '/images/ad/car-summer.webp', video: '/videos/ad/car-summer.mp4' },
+    { id: 'autumn', label: 'Autumn', img: '/images/ad/car-autumn.webp', video: '/videos/ad/car-autumn.mp4' },
+  ],
+  frames: [
+    { id: 'payoff', label: 'The payoff', img: '/images/ad/car-payoff.webp' },
+    { id: 'claim', label: 'Claim & end card', img: '/images/ad/car-claim.webp' },
+  ],
+};
+
 export const PHARMA = {
   badge: 'Concept · self-initiated',
   eyebrow: 'AI video · Pharmacy',

@@ -1,15 +1,15 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { publicUrl } from '../../utils/publicUrl';
-import { SPOT, WORLD, COMPARE, PHARMA, CTA } from './adData';
+import { SPOT, WORLD, COMPARE, CAR, PHARMA, CTA } from './adData';
 import './AdShowcase.css';
 
 const AdModel = lazy(() => import('./AdModel'));
 
 /* ================================================================
    Advertising & Video: spot Don Tomás (cliente reale), il "mondo"
-   del personaggio, il confronto clay/finale, poi i concept video AI
-   per settori (farmacia) e l'invito a contattarti.
+   del personaggio, il confronto clay/finale, poi lo spot narrativo AI
+   (auto), i concept video AI per settori (farmacia) e l'invito a contattarti.
    Testi e file in adData.js.
    ================================================================ */
 
@@ -32,7 +32,7 @@ function useInView(ref, margin = '200px') {
   return v;
 }
 
-function Hero() {
+function Hero({ spot, name, badges }) {
   const [playing, setPlaying] = useState(false);
   const v = useRef(null);
   const start = () => {
@@ -42,18 +42,41 @@ function Hero() {
   return (
     <div className="ad-hero">
       {playing ? (
-        <video ref={v} src={publicUrl(SPOT.video)} poster={publicUrl(SPOT.poster)} controls playsInline aria-label="Don Tomás spot" />
+        <video ref={v} src={publicUrl(spot.video)} poster={publicUrl(spot.poster)} controls playsInline aria-label={name} />
       ) : (
-        <button type="button" className="ad-hero-btn" onClick={start} aria-label="Play the Don Tomás spot">
-          <img src={publicUrl(SPOT.poster)} alt="" />
+        <button type="button" className="ad-hero-btn" onClick={start} aria-label={`Play the ${name}`}>
+          <img src={publicUrl(spot.poster)} alt="" />
           <span className="ad-play" aria-hidden="true">▶</span>
-          <span className="ad-dur">{SPOT.duration}</span>
+          <span className="ad-dur">{spot.duration}</span>
         </button>
       )}
       <div className="ad-badges" aria-hidden={playing}>
-        <span className="ad-client">Client</span>
-        <span>{SPOT.client}</span>
+        <span className="ad-client">{badges[0]}</span>
+        <span>{badges[1]}</span>
       </div>
+    </div>
+  );
+}
+
+/* stagione: la clip parte al passaggio del mouse (o al tocco) e si ferma all'uscita */
+function Season({ s, reduced }) {
+  const v = useRef(null);
+  const ref = useRef(null);
+  const show = useInView(ref);
+  const play = () => {
+    if (reduced || !v.current) return;
+    v.current.currentTime = 0;
+    v.current.play().catch(() => {});
+  };
+  const stop = () => { if (v.current) { v.current.pause(); v.current.currentTime = 0; } };
+  return (
+    <div ref={ref} className="ad-season" tabIndex={0} onMouseEnter={play} onFocus={play} onClick={play} onMouseLeave={stop} onBlur={stop}>
+      {show ? (
+        <video ref={v} src={publicUrl(s.video)} poster={publicUrl(s.img)} muted playsInline loop preload="none" aria-label={s.label} />
+      ) : (
+        <img src={publicUrl(s.img)} alt={s.label} loading="lazy" />
+      )}
+      <span className="ad-pill">{s.label}</span>
     </div>
   );
 }
@@ -184,7 +207,7 @@ export default function AdShowcase() {
   return (
     <section className="ad" aria-label="Advertising and video">
       <div className="ad-blk ad-dt">
-        <Hero />
+        <Hero spot={SPOT} name="Don Tomás spot" badges={['Client', SPOT.client]} />
         <div className="ad-in">
           <p className="ad-ey">{SPOT.eyebrow}</p>
           <h2>{SPOT.title}</h2>
@@ -197,6 +220,32 @@ export default function AdShowcase() {
           </div>
 
           <Compare />
+        </div>
+      </div>
+
+      <div className="ad-blk ad-car">
+        <Hero spot={CAR} name="parking spot commercial" badges={[CAR.badge, CAR.label]} />
+        <div className="ad-in">
+          <p className="ad-ey">{CAR.eyebrow}</p>
+          <h2>{CAR.title}</h2>
+          <p className="ad-lead">{CAR.text}</p>
+          <ul className="ad-tags">{CAR.tags.map((t) => <li key={t}>{t}</li>)}</ul>
+
+          <div className="ad-sea-head">
+            <p className="ad-ey">{CAR.seasonsTitle}</p>
+            <span aria-hidden="true">▶ Hover or tap</span>
+          </div>
+          <div className="ad-seasons">
+            {CAR.seasons.map((s) => <Season key={s.id} s={s} reduced={reduced} />)}
+          </div>
+          <div className="ad-frames">
+            {CAR.frames.map((f) => (
+              <figure key={f.id}>
+                <img src={publicUrl(f.img)} alt={f.label} loading="lazy" />
+                <figcaption className="ad-pill">{f.label}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </div>
 
